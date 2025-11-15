@@ -1,0 +1,16 @@
+# Ignore virtual environment
+movie/
+venv/
+env/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore temporary files
+*.log
+*.tmp
+.DS_Store
+
+# Ignore Jupyter checkpoints
+.ipynb_checkpoints/
