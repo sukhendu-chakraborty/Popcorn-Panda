@@ -30,8 +30,10 @@ def recommend(movie):
 
 
 def load_similarity():
-    url = "https://drive.google.com/file/d/18Vw36yPTE4AVtlWHtPnPoDqE8zN2Huxu/view?usp=sharing"
+    file_id = "18Vw36yPTE4AVtlWHtPnPoDqE8zN2Huxu"
+    url = f"https://drive.google.com/uc?export=download&id={file_id}"
     response = requests.get(url)
+    response.raise_for_status()
     return pickle.loads(response.content)
 
 similarity = load_similarity()
@@ -53,4 +55,5 @@ if st.button('Recommend'):
         with cols[i]:
             st.text(names[i])
             st.image(posters[i])
+
 
