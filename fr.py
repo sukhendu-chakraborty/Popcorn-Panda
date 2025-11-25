@@ -30,12 +30,9 @@ def recommend(movie):
 
 
 def load_similarity():
-    file_id = "18Vw36yPTE4AVtlWHtPnPoDqE8zN2Huxu"
-    url = f"https://drive.google.com/uc?export=download&id={file_id}"
-    response = requests.get(url)
-    response.raise_for_status()
-    return pickle.loads(response.content)
-
+    url = "https://github.com/sukhendu-chakraborty/Popcorn-Panda/releases/download/movie/similarity.pkl"
+    data = requests.get(url).content
+    return pickle.loads(data)
 similarity = load_similarity()
 movies = pickle.load(open('movies.pkl','rb'))
 movie_list = movies['title'].values
@@ -55,5 +52,6 @@ if st.button('Recommend'):
         with cols[i]:
             st.text(names[i])
             st.image(posters[i])
+
 
 
