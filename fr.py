@@ -29,7 +29,12 @@ def recommend(movie):
     return recommended_movies, recommended_movies_posters
 
 
-similarity = pickle.load(open('similarity.pkl','rb'))
+def load_similarity():
+    url = "https://drive.google.com/file/d/18Vw36yPTE4AVtlWHtPnPoDqE8zN2Huxu/view?usp=sharing"
+    response = requests.get(url)
+    return pickle.loads(response.content)
+
+similarity = load_similarity()
 movies = pickle.load(open('movies.pkl','rb'))
 movie_list = movies['title'].values
 
@@ -48,3 +53,4 @@ if st.button('Recommend'):
         with cols[i]:
             st.text(names[i])
             st.image(posters[i])
+
